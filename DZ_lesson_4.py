@@ -47,13 +47,21 @@ def func_letter(names_list):
 #
 ##Задание  для pro: В файле с логами найти дату самого позднего лога (по метке времени):
 #
-with open("log", 'r') as f:
-    date_time_min = 0
+#f = open("log", "r")
+with open('log', 'r') as f:
+    dates = [] #
     for line in f:
-        if not date_time_min:
-            date_time_min = datetime.strptime(line[:19], '%Y-%m-%d %H:%M:%S')
-            continue
-            date_time_max = datetime.strptime(line[:19], '%Y-%m-%d %H:%M:%S')
-            if date_time_max < date_time_min:
-                date_time_min = date_time_max
-    print(date_time_min)
+        log_time = line.split(',')
+        log_time = datetime.strptime(log_time[0], '%Y-%m-%d %H:%M:%S')
+        dates.append(log_time)
+
+descend_dates = sorted(dates)
+latest_date = descend_dates[0]
+print(latest_date)
+
+
+
+
+
+
+
